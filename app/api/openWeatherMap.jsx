@@ -9,12 +9,13 @@ module.exports = {
 
     return axios.get(requestUrl).then(function (res) {
       if (res.data.list.length === 0) {
-        throw new Error('City not found');
+        throw new Error('Not Found City');
       } else {
         return res.data.list[0].main.temp;
       }
     }, function (res) {
-      throw new Error(res.data.message);
+      //throw new Error(res.data.message);
+      throw new Error('Unable to fetch weather for that location.');
     });
   }
 }
